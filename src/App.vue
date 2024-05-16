@@ -1,5 +1,7 @@
 <script>
 //import { RouterLink, RouterView } from 'vue-router';
+import { store } from "./store";
+import axios from "axios";
 import HeaderComponent from './views/HeaderComponent.vue';
 import MainComponent from "./views/MainComponent.vue";
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -8,7 +10,7 @@ export default {
   name: 'App',
   data() {
     return {
-
+      store,
     }
   },
   methods: {
