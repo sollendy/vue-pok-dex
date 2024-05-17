@@ -8,6 +8,10 @@ export default {
         }
     },
     emits: ['ricerca'],
+
+    props: {
+        pokemon: Object,
+    },
     methods: {
         
     },
@@ -26,7 +30,7 @@ export default {
             <div class="left-app h-100 d-flex flex-column gap-3">
                 <div class="input-group d-flex justify-content-between">
                     <div class="input-group-append d-flex gap-1 me-2">
-                        <input v-model="store.userInput" type="text" class="form-control" placeholder="Nome pokémon" aria-label="Cerca" aria-describedby="button-addon2">
+                        <input @keyup.enter="$emit('ricerca')" v-model="store.userInput" type="text" class="form-control" placeholder="Nome pokémon" aria-label="Cerca" aria-describedby="button-addon2">
                         <button @click="$emit('ricerca')" class="btn btn-light" type="button" id="button-addon1"><i class="bi bi-search"></i></button>
                     </div>
                     <button class="btn btn-light border rounded-0 d-none" type="button" id="button-addon2">Acchiappalo!</button>

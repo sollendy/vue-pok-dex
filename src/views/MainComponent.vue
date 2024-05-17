@@ -22,7 +22,7 @@ export default {
 <template>
     <main>
         <div class="app-cnt d-flex justify-content-center align-items-center">
-            <PokedexComponent/>
+            <PokedexComponent @ricerca="cercaPokemon()"></PokedexComponent>
         </div>
     </main>
 </template>

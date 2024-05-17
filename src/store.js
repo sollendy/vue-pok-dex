@@ -1,6 +1,6 @@
 import {reactive} from 'vue';
 export const store = reactive({
-    pokéCall: "https://pokeapi.co/api/v2/pokemon/",
-    pokémon: [],
+    pokeCall: "https://pokeapi.co/api/v2/pokemon/",
+    pokemon: [],
     userInput: "",
 });

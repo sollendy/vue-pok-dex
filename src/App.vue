@@ -13,8 +13,20 @@ export default {
       store,
     }
   },
+  created() {
+      axios.get('https://pokeapi.co/api/v2/pokemon/cyndaquil').then((res)=>{
+        this.store.pokemon = res.data;
+        console.log(res)
+      });
+    },
   methods: {
-
+    cercaPokemon() {
+      let pokeApi = this.store.pokeCall
+      if (this.store.userInput != "") {
+        pokeApi += `${this.store.userInput}`;
+        console.log(pokeApi)
+      }
+    },
   },
   components: {
     HeaderComponent,
