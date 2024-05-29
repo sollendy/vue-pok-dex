@@ -1,5 +1,7 @@
 <script>
 import { store } from '../store';
+import PokeCard from './PokeCard.vue';
+// import AppSearch from "./AppSearch.vue";
 export default {
     name: 'PokedexComponent',
     data() {
@@ -7,16 +9,19 @@ export default {
             store,
         }
     },
-    emits: ['ricerca'],
+    // emits: ['ricerca'],
 
-    props: {
-        pokemon: Object,
-    },
+    // props: {
+    //     pokemon: Object,
+    // },
     methods: {
-        
+        cercaPokemon(pokemon) {
+            this.$emit('cercaPokemon', pokemon)
+        }
     },
     components: {
-
+        PokeCard,
+        // AppSearch
     },
     mounted() {
 
@@ -28,23 +33,15 @@ export default {
     <div class="poke-cont w-75 d-flex">
         <section class="left-side p-3 h-100 w-50">
             <div class="left-app h-100 d-flex flex-column gap-3">
+                <!-- <AppSearch @cercaPokemon="cercaPokemon" :pokemonSelected="pokemon"></AppSearch> -->
                 <div class="input-group d-flex justify-content-between">
                     <div class="input-group-append d-flex gap-1 me-2">
-                        <input @keyup.enter="$emit('ricerca')" v-model="store.userInput" type="text" class="form-control" placeholder="Nome pokémon" aria-label="Cerca" aria-describedby="button-addon2">
-                        <button @click="$emit('ricerca')" class="btn btn-light" type="button" id="button-addon1"><i class="bi bi-search"></i></button>
+                        <input v-model="store.userInput" @keyup.enter="cercaPokemon(store.userInput)" type="text" class="form-control" placeholder="Nome pokémon" aria-label="Cerca" aria-describedby="button-addon2">
+                        <button @click="cercaPokemon(store.userInput)" class="btn btn-light" type="button" id="button-addon1"><i class="bi bi-search"></i></button>
                     </div>
                     <button class="btn btn-light border rounded-0 d-none" type="button" id="button-addon2">Acchiappalo!</button>
                 </div>
-                <div class="foto-stats h-100 d-flex flex-column gap-3">
-                    <div class="foto-cont w-75 bg-secondary p-2 d-flex justify-content-center align-self-center ms-5 me-5">
-                        <img class="w-100 border border-4 border-black" src="https://picsum.photos/250/120" alt="pokéfoto">
-                    </div>
-                    <div class="stats-cont h-100">
-                        <p class="stats border border-dark rounded h-100 w-100">
-                            
-                        </p>
-                    </div>
-                </div>
+                <PokeCard></PokeCard>
             </div>
         </section>
         <section class="right-side p-5 h-100 w-50">
@@ -63,7 +60,7 @@ export default {
         background-color: rgb(192, 10, 11);
         .left-side {
             border-right: solid 10px rgb(138, 0, 0);
-            .left-app {
+            /*.left-app {
                 .foto-stats {
                     .stats-cont {
                         .stats {
@@ -72,7 +69,7 @@ export default {
                         }
                     }
                 }
-            }
+            }*/
         }
     }
 

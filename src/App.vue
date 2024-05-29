@@ -3,34 +3,44 @@
 import { store } from "./store";
 import axios from "axios";
 import HeaderComponent from './views/HeaderComponent.vue';
-import MainComponent from "./views/MainComponent.vue";
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import PokedexComponent from "./components/PokedexComponent.vue";
+// import MainComponent from "./views/MainComponent.vue";
 // import FooterComponent from './components/FooterComponent.vue';
 export default {
   name: 'App',
   data() {
     return {
       store,
+      pokemonSelected: "ah"
     }
   },
   created() {
-      axios.get('https://pokeapi.co/api/v2/pokemon/cyndaquil').then((res)=>{
-        this.store.pokemon = res.data;
-        console.log(res)
-      });
+      
     },
   methods: {
-    cercaPokemon() {
-      let pokeApi = this.store.pokeCall
-      if (this.store.userInput != "") {
-        pokeApi += `${this.store.userInput}`;
-        console.log(pokeApi)
-      }
+    cercaPokemon(pokemon) {
+      console.log('hgjgjgj', pokemon)
+      axios.get('https://pokeapi.co/api/v2/pokemon/' + pokemon).then((res)=>{
+        console.log('this:', this)
+        console.log(this.pokemonSelected)
+        this.pokemonSelected = res.data
+        console.log('update', this.pokemonSelected)
+      }).catch(err => {
+        //alert con pokemon non trovato
+        console.log('err: ', err)
+      });
+      // let pokeApi = this.store.pokeCall
+      // if (this.store.userInput != "") {
+      //   pokeApi += `${this.store.userInput}`;
+      //   console.log(pokeApi)
+      // }
     },
   },
   components: {
     HeaderComponent,
-    MainComponent,
+    // MainComponent,
+    PokedexComponent
     // FooterComponent
   },
   mounted() {
@@ -44,7 +54,11 @@ export default {
     <!-- <div class="wrapper">
       
     </div> -->
-    <MainComponent/>
+    <div class="container d-flex justify-content-center">
+
+      <PokedexComponent @cercaPokemon="cercaPokemon"></PokedexComponent>
+    </div>
+      <!-- <MainComponent @pokeselect="cercaPokemon" @pokemonSelected="pokemonSelected" /> -->
 
   <!-- <RouterView /> -->
 </template>
