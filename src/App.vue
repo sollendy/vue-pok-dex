@@ -25,6 +25,7 @@ export default {
         console.log('this:', this)
         console.log(this.pokemonSelected)
         this.pokemonSelected = res.data
+        //this.store.pokeArr = res.data.game_indices da capire come mettere lì quel che mi serve (se devo realmente fare così)
         console.log('update', this.pokemonSelected)
       }).catch(err => {
         //alert con pokemon non trovato
