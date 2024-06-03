@@ -11,9 +11,9 @@ export default {
     },
     // emits: ['ricerca'],
 
-    // props: {
-    //     pokemon: Object,
-    // },
+    props: {
+        pokemon: Object,
+    },
     methods: {
         cercaPokemon(pokemon) {
             this.$emit('cercaPokemon', pokemon)

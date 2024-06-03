@@ -24,7 +24,7 @@ export default {
         </div>
         <div class="stats-cont h-100">
             <p class="stats border border-dark rounded h-100 w-100">
-                <!-- {{ pokemon.name }} -->
+                {{ pokemon.name }}
             </p>
         </div>
     </div>

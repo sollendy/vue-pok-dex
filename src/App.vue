@@ -23,11 +23,12 @@ export default {
       console.log('hgjgjgj', pokemon)
       axios.get('https://pokeapi.co/api/v2/pokemon/' + pokemon).then((res)=>{
         // console.log('this:', this)
-        console.log(this.pokemonSelected)
         this.pokemonSelected = res.data
+        console.log(this.pokemonSelected)
         // this.store.pokeArr = res.data ho cercato di fare funzionare il pokearr nello store per poterlo usare nella props della pokecard ma ancora qualcosa sfugge
         //this.store.pokeArr = res.data.game_indices da capire come mettere lì quel che mi serve (se devo realmente fare così)
         console.log('update', this.pokemonSelected)
+        // console.log("verifica res", res)
       }).catch(err => {
         //alert con pokemon non trovato
         console.log('err: ', err)
@@ -57,8 +58,7 @@ export default {
       
     </div> -->
     <div class="container d-flex justify-content-center">
-
-      <PokedexComponent @cercaPokemon="cercaPokemon"></PokedexComponent>
+      <PokedexComponent :pokemon="pokemonSelected" @cercaPokemon="cercaPokemon"></PokedexComponent>
     </div>
       <!-- <MainComponent @pokeselect="cercaPokemon" @pokemonSelected="pokemonSelected" /> -->
 
