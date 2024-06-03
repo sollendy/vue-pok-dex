@@ -41,7 +41,13 @@ export default {
                     </div>
                     <button class="btn btn-light border rounded-0 d-none" type="button" id="button-addon2">Acchiappalo!</button>
                 </div>
-                  <PokeCard :pokemon="pokemon"></PokeCard> <!--se metto il vfor mi combina un macello ma credo che sia dovuto a come ho impostato la logica dell'array, in più la props dei pokemon continua a dar malfunzionamenti che credo siano dovuti al fatto che la props si lega a doppio filo col vfor perciò c'è un errore penso proprio in come tutto sia concepito sospetto che c'è una malagestione forse dello store e su come cerco di usarlo. -->
+                  <PokeCard :pokemon="pokemon"></PokeCard> 
+                  <!-- /*v-for="mostriciattolo in store.pokeArr" NON VA VEDI APP PER DETTAGLI*\ -->
+                  <!--
+    se metto il vfor mi combina un macello ma credo che sia dovuto a come ho impostato la logica dell'array, 
+    in più la props dei pokemon continua a dar malfunzionamenti che credo siano dovuti al fatto che la props si lega a doppio filo col vfor, 
+    perciò c'è un errore penso proprio in come tutto sia concepito sospetto che c'è una malagestione forse dello store e su come cerco di usarlo. 
+                -->
             </div>
         </section>
         <section class="right-side p-5 h-100 w-50">
