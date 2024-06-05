@@ -23,9 +23,20 @@ export default {
             <img class="w-100 border border-4 border-black" src="https://picsum.photos/250/120" alt="pokéfoto"> 
         </div>
         <div class="stats-cont h-100">
-            <p class="stats border border-dark rounded h-100 w-100">
-                {{ pokemon.name }}
-            </p>
+            <div class="stats border border-dark rounded h-100 w-100">
+                <ul class="prime-info" v-if="pokemon !== ''">
+                    <li>name: <b> {{pokemon.name}} </b></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                 <ul class="prime-info" v-else">
+                    AH
+                </ul>
+            </div>
+            <!-- vorrei che tutto ciò che è visibile dentro le ul sia visibile SOLO quando viene cercato il pokémon,
+            pertanto non so perché il testo "name:" non viene nascosto dato che io nel v-if in teoria,
+            sto dicendo che il contenuto di ul deve essere visibile SOLO se la props pokemon è diversa da niente. -->
         </div>
     </div>
 </template>
@@ -36,6 +47,9 @@ export default {
         .stats {
             background-color: rgb(43, 212, 12);
             width: 90%;
+            .prime-info {
+                list-style-type: none;
+            }
         }
     }
 }
