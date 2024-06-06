@@ -12,7 +12,7 @@ export default {
   data() {
     return {
       store,
-      pokemonSelected: "ah"
+      pokemonSelected: ""
     }
   },
   created() {

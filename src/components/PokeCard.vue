@@ -25,13 +25,13 @@ export default {
         <div class="stats-cont h-100">
             <div class="stats border border-dark rounded h-100 w-100">
                 <ul class="prime-info" v-if="pokemon !== ''">
-                    <li>name: <b> {{pokemon.name}} </b></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                    <li>Nome: <b> {{ pokemon.name}} </b></li>
+                    <li>Tipo: <b> {{ pokemon.type}} </b></li>
+                    <li>Altezza: <b> {{ pokemon.height}} </b></li>
+                    <li>Peso: <b> {{ pokemon.Weight}} </b></li>
                 </ul>
-                 <ul class="prime-info" v-else">
-                    AH
+                 <ul class="prime-info" v-else>
+                    Nessun Pokémon valido scelto.
                 </ul>
             </div>
             <!-- vorrei che tutto ciò che è visibile dentro le ul sia visibile SOLO quando viene cercato il pokémon,
