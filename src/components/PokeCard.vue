@@ -20,13 +20,15 @@ export default {
 <template>
     <div class="foto-stats h-100 d-flex flex-column gap-3">
         <div class="foto-cont w-75 bg-secondary p-2 d-flex justify-content-center align-self-center ms-5 me-5">
-            <img class="w-100 border border-4 border-black" src="https://picsum.photos/250/120" alt="pokéfoto"> 
+            <img v-if="pokemon !== ''" class="w-100 border border-4 border-black" :src="pokemon.sprites.front_default" alt="pokéfoto">
+            <img v-else class="w-100 border border-4 border-black p-3" src="https://www.pngall.com/wp-content/uploads/4/Pokeball-PNG-Images.png" alt="pokéfoto"> 
+
         </div>
         <div class="stats-cont h-100">
             <div class="stats border border-dark rounded h-100 w-100">
                 <ul class="prime-info" v-if="pokemon !== ''">
                     <li>Nome: <b> {{ pokemon.name}} </b></li>
-                    <li>Tipo: <b> {{ pokemon.type}} </b></li>
+                    <li>Tipo: <b> {{ pokemon.types[0].type.name}} </b></li>
                     <li>Altezza: <b> {{ pokemon.height}} </b></li>
                     <li>Peso: <b> {{ pokemon.Weight}} </b></li>
                 </ul>
