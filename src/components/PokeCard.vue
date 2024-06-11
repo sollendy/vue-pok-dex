@@ -35,6 +35,7 @@ export default {
                 <ul class="info second-info">
                     <!-- Qui devo inserire una barra piena in base a quanto è alta
                      ciascuna delle caratteristiche relative al pokémon cercato -->
+                     <li v-for="(params, index) in pokemon.stats" :key="index"> {{ params.stat.name }}: <span class="stat-bars bg-dark">a</span> </li>
                 </ul>
             </div>
             <div v-else class="stats text-center border border-dark rounded pt-2 h-100 w-100">
@@ -52,6 +53,14 @@ export default {
             width: 90%;
             .info {
                 list-style-type: none;
+            }
+            ul.second-info {
+                li {
+                    span.stat-bars {
+                        height: 5px;
+                        //dato che è uno span, il d-inline impedisce che la sua altezza venga alterata, cercare soluzione alternativa.
+                    }
+                }
             }
         }
     }
