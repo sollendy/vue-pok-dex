@@ -25,7 +25,7 @@ export default {
 </script>
 
 <template>
-  <header>
+  <header class="pb-4">
     <h1 class="text-center py-1">EduaDex</h1>
     <hr class="border border-black border-3">
   </header>
