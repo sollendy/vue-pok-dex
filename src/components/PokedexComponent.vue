@@ -7,6 +7,7 @@ export default {
     data() {
         return {
             store,
+            searchSuccessful: false, // Aggiungi questa variabile
         }
     },
     // emits: ['ricerca'],
@@ -16,7 +17,8 @@ export default {
     },
     methods: {
         cercaPokemon(pokemon) {
-            this.$emit('cercaPokemon', pokemon)
+            this.$emit('cercaPokemon', pokemon);
+            this.searchSuccessful = true; // Imposta a true quando la funzione viene chiamata
         }
     },
     components: {
@@ -30,16 +32,16 @@ export default {
 </script>
 
 <template>
-    <div class="poke-cont w-75 d-flex flex-column flex-lg-row flex-md-row">
+    <div class="poke-cont w-75 mb-2 d-flex flex-column flex-lg-row flex-md-row">
         <section class="left-side p-3 h-100 w-100 w-md-50">
             <div class="left-app h-100 d-flex flex-column gap-3">
                 <!-- <AppSearch @cercaPokemon="cercaPokemon" :pokemonSelected="pokemon"></AppSearch> -->
-                <div class="input-group d-flex justify-content-between">
+                <div class="input-group d-flex justify-content-center flex-md-nowrap gap-3">
                     <div class="input-group-append d-flex gap-1 me-2">
                         <input v-model="store.userInput" @keyup.enter="cercaPokemon(store.userInput)" type="text" class="form-control" placeholder="Nome pokémon" aria-label="Cerca" aria-describedby="button-addon2">
                         <button @click="cercaPokemon(store.userInput)" class="btn btn-light" type="button" id="button-addon1"><i class="bi bi-search"></i></button>
                     </div>
-                    <button class="btn btn-light border rounded-0 d-none" type="button" id="button-addon2">Acchiappalo!</button>
+                    <button class="btn btn-light border rounded-2" type="button" id="button-addon2" v-if="searchSuccessful">Acchiappalo!</button>
                 </div>
                   <PokeCard :pokemon="pokemon"></PokeCard>
                   <!-- /*v-for="mostriciattolo in store.pokeArr" NON VA VEDI APP PER DETTAGLI*\ -->
@@ -51,8 +53,8 @@ export default {
             </div>
         </section>
         <section class="right-side p-5 h-100 w-100 w-md-50">
-            <div class="right-app h-100 bg-light pt-4 ps-2">
-                <h4>Miei Pokémon</h4>
+            <div class="right-app h-100 w-100 bg-light pb-4 pt-md-2 ps-2">
+                <h5>Miei Pokémon</h5>
             </div>
         </section>
     </div>

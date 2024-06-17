@@ -19,7 +19,10 @@ export default {
         setStats(par) {
             //
             console.log('skdbf', par)
-        }
+        },
+        // scorriImg() {
+        //     pokemon.sprites++
+        // }
     }
 }
 </script>
@@ -28,8 +31,10 @@ export default {
     <div class="foto-stats h-100 d-flex flex-column gap-3">
         <div class="foto-cont w-75 border border-4 border-black bg-light p-2 d-flex justify-content-center align-self-center ms-5 me-5">
             <img v-if="pokemon !== ''" class="w-50" :src="pokemon.sprites.front_default" alt="pokéfoto">
+            <!-- vorrei fare in modo che se l'utente clicca sulla img
+             essa scorre mostrando tutte le img disponibili del Pokémon ricominciando da capo
+             dopo l'ultima disponibile -->
             <img v-else class="w-50 p-3" src="https://www.pngall.com/wp-content/uploads/4/Pokeball-PNG-Images.png" alt="pokéfoto"> 
-
         </div>
         <div class="stats-cont h-100">
             <div v-if="pokemon !== ''"  class="stats border border-dark rounded h-100 w-100">
@@ -45,7 +50,11 @@ export default {
                      <li v-for="(params, index) in pokemon.stats" :key="index" class="d-flex gap-1 align-items-center position-relative">
                         {{ this.con(params) }}
                         <label for="nome-parametro">{{ params.stat.name }}:</label> 
-                        <div class="progress w-100" role="progressbar" aria-label="Basic example" :aria-valuenow="params.base_stat" aria-valuemin="0" aria-valuemax="100">
+                        <!-- forse in questa label conviene sostiuire i nomi di attacco e difesa speciali 
+                         con qualcosa di più corto in modo da non deformare il contenuto quando esso si restringe.
+                         Bisogna solo capire come fare dato che il tutto è gestito tramite chiamata API.
+                         Ho la mezza idea di creare un array mio e scataflesciarglielo malissimo -->
+                        <div class="progress" role="progressbar" aria-label="Basic example" :aria-valuenow="params.base_stat" aria-valuemin="0" aria-valuemax="100">
                             <div class="progress-bar" :style="{'width': (params.base_stat * 100) / 300 + '%', 'background-color': (params.base_stat * 100) / 300 < 25 ? 'red' : (params.base_stat * 100) / 300 < 50 ? 'yellow' : 'orange'}">{{Math.ceil((params.base_stat * 100) / 300) + '%'}}</div>
                         </div>
                        <!--  <div class="stat-bars bg-dark border rounded border-black h-100 w-100">
@@ -76,6 +85,10 @@ export default {
                         height: 0.3rem;
                         max-width: 50%;
                         //dato che è uno span, il d-inline predefinito impedisce che la sua altezza venga alterata, cercare soluzione alternativa.
+                    }
+                    .progress {
+                        height: 0.5em;
+                        width: 60%;
                     }
                 }
             }
