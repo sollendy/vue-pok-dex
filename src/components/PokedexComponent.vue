@@ -32,7 +32,8 @@ export default {
 </script>
 
 <template>
-    <div class="poke-cont w-75 mb-2 d-flex flex-column flex-lg-row flex-md-row">
+    <div class="poke-cont w-75 mb-2 d-flex flex-column flex-md-row">
+        <!-- me la devo pensare se lasciare la w a 75 o 100 -->
         <section class="left-side p-3 h-100 w-100 w-md-50">
             <div class="left-app h-100 d-flex flex-column gap-3">
                 <!-- <AppSearch @cercaPokemon="cercaPokemon" :pokemonSelected="pokemon"></AppSearch> -->

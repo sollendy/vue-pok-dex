@@ -54,6 +54,7 @@ export default {
                          con qualcosa di più corto in modo da non deformare il contenuto quando esso si restringe.
                          Bisogna solo capire come fare dato che il tutto è gestito tramite chiamata API.
                          Ho la mezza idea di creare un array mio e scataflesciarglielo malissimo -->
+                        <!--<label for="nome-parametro">{{ params.stat.name === 'special-attack' ? 's. attack' : params.stat.name === 'special-defense' ? 's. defense' : params.stat.name }}:</label> -->
                         <div class="progress" role="progressbar" aria-label="Basic example" :aria-valuenow="params.base_stat" aria-valuemin="0" aria-valuemax="100">
                             <div class="progress-bar" :style="{'width': (params.base_stat * 100) / 300 + '%', 'background-color': (params.base_stat * 100) / 300 < 25 ? 'red' : (params.base_stat * 100) / 300 < 50 ? 'yellow' : 'orange'}">{{Math.ceil((params.base_stat * 100) / 300) + '%'}}</div>
                         </div>
