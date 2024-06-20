@@ -1,9 +1,12 @@
 <script>
+import { s } from 'vite/dist/node/types.d-aGj9QkWt'
+
 export default {
     name: "PokeCard",
     data() {
         return {
-
+           //pokeImgs: this.pokemon.sprites,
+           imgAttiva: 4
         }
     },
     props: {
@@ -11,26 +14,31 @@ export default {
     },
     methods: {
         con(par) {
-            //
-            console.log('skdbf', par)
+            console.log('methods', par)
+        },
+        scorriImg() {
+            console.log(this.pokemon.sprites)
+            if (this.imgAttiva === this.pokemon.sprites - 1) this.imgAttiva = 0;
+            else this.imgAttiva += 1;
+            // for(i = 0; i = this.pokemon.sprites.length; i++) {
+            //     this.imgAttiva + 1,
+            // }
+            // console.log(imgAttiva)
         }
     },
     computed: {
-        setStats(par) {
-            //
-            console.log('skdbf', par)
-        },
         // scorriImg() {
         //     pokemon.sprites++
         // }
-    }
+    },
 }
 </script>
 
 <template>
+    <!-- {{ console.log(pokemon.sprites) }} -->
     <div class="foto-stats h-100 d-flex flex-column gap-3">
-        <div class="foto-cont w-75 border border-4 border-black bg-light p-2 d-flex justify-content-center align-self-center ms-5 me-5">
-            <img v-if="pokemon !== ''" class="w-50" :src="pokemon.sprites.front_default" alt="pokéfoto">
+        <div class="foto-cont w-75 border border-4 border-black bg-light p-2 d-flex justify-content-center align-self-center ms-5 me-5" @click="scorriImg()">
+            <img v-if="pokemon !== ''" class="w-50" :src="pokemon.sprites[imgAttiva].front_default" alt="pokéfoto">
             <!-- vorrei fare in modo che se l'utente clicca sulla img
              essa scorre mostrando tutte le img disponibili del Pokémon ricominciando da capo
              dopo l'ultima disponibile -->
@@ -82,10 +90,8 @@ export default {
             }
             ul.second-info {
                 li {
-                    span.stat-bars {
-                        height: 0.3rem;
-                        max-width: 50%;
-                        //dato che è uno span, il d-inline predefinito impedisce che la sua altezza venga alterata, cercare soluzione alternativa.
+                    label {
+                      width: 114px;
                     }
                     .progress {
                         height: 0.5em;

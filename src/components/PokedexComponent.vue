@@ -32,7 +32,7 @@ export default {
 </script>
 
 <template>
-    <div class="poke-cont w-75 mb-2 d-flex flex-column flex-md-row">
+    <div class="poke-cont w-100 mb-2 d-flex flex-column flex-md-row">
         <!-- me la devo pensare se lasciare la w a 75 o 100
          in alternativa penso che darò un colpo di SCSS in modo più specifico -->
         <section class="left-side p-3 h-100 w-100 w-md-50">
