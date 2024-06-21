@@ -1,12 +1,11 @@
 <script>
-import { s } from 'vite/dist/node/types.d-aGj9QkWt'
 
 export default {
     name: "PokeCard",
     data() {
         return {
            //pokeImgs: this.pokemon.sprites,
-           imgAttiva: 4
+           imgAttiva: 0
         }
     },
     props: {
@@ -17,9 +16,9 @@ export default {
             console.log('methods', par)
         },
         scorriImg() {
-            console.log(this.pokemon.sprites)
+            console.log("le img sono: ", this.pokemon.sprites)
             if (this.imgAttiva === this.pokemon.sprites - 1) this.imgAttiva = 0;
-            else this.imgAttiva += 1;
+            else this.imgAttiva += 4;
             // for(i = 0; i = this.pokemon.sprites.length; i++) {
             //     this.imgAttiva + 1,
             // }
@@ -38,7 +37,7 @@ export default {
     <!-- {{ console.log(pokemon.sprites) }} -->
     <div class="foto-stats h-100 d-flex flex-column gap-3">
         <div class="foto-cont w-75 border border-4 border-black bg-light p-2 d-flex justify-content-center align-self-center ms-5 me-5" @click="scorriImg()">
-            <img v-if="pokemon !== ''" class="w-50" :src="pokemon.sprites[imgAttiva].front_default" alt="pokéfoto">
+            <img v-if="pokemon !== ''" class="w-50" :src="pokemon.sprites.front_default" alt="pokéfoto">
             <!-- vorrei fare in modo che se l'utente clicca sulla img
              essa scorre mostrando tutte le img disponibili del Pokémon ricominciando da capo
              dopo l'ultima disponibile -->
