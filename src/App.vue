@@ -21,7 +21,7 @@ export default {
   methods: {
     cercaPokemon(pokemon) {
       console.log('hgjgjgj', pokemon)
-      axios.get('https://pokeapi.co/api/v2/pokemon/' + pokemon).then((res)=>{
+      axios.get('https://pokeapi.co/api/v2/pokemon/' + pokemon.toLowerCase()).then((res)=>{
         // console.log('this:', this)
         this.pokemonSelected = res.data
         console.log(this.pokemonSelected)
@@ -32,6 +32,7 @@ export default {
       }).catch(err => {
         //alert con pokemon non trovato
         console.log('err: ', err)
+        this.pokemonSelected = ""
       });
       // let pokeApi = this.store.pokeCall
       // if (this.store.userInput != "") {

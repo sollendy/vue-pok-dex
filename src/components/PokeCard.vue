@@ -4,7 +4,7 @@ export default {
     name: "PokeCard",
     data() {
         return {
-           //pokeImgs: this.pokemon.sprites,
+           //pokeImgs: [front_default, back_default, front_shiny, back_shiny],
            imgAttiva: 0
         }
     },
@@ -16,13 +16,15 @@ export default {
             console.log('methods', par)
         },
         scorriImg() {
-            console.log("le img sono: ", this.pokemon.sprites)
-            if (this.imgAttiva === this.pokemon.sprites - 1) this.imgAttiva = 0;
-            else this.imgAttiva += 4;
-            // for(i = 0; i = this.pokemon.sprites.length; i++) {
-            //     this.imgAttiva + 1,
-            // }
-            // console.log(imgAttiva)
+            console.log("le img sono: ", this.pokeImgs)
+            for (i = 0; i = this.pokeImgs.length; i++) {
+                this.imgAttiva = this.pokeImgs[0]
+                this.pokeImgs++
+                if (this.imgAttiva === this.pokeImgs - 1) {
+                    this.imgAttiva = 0;
+                }
+            }
+            console.log(imgAttiva)
         }
     },
     computed: {
@@ -63,7 +65,7 @@ export default {
                          Ho la mezza idea di creare un array mio e scataflesciarglielo malissimo -->
                         <!--<label for="nome-parametro">{{ params.stat.name === 'special-attack' ? 's. attack' : params.stat.name === 'special-defense' ? 's. defense' : params.stat.name }}:</label> -->
                         <div class="progress" role="progressbar" aria-label="Basic example" :aria-valuenow="params.base_stat" aria-valuemin="0" aria-valuemax="100">
-                            <div class="progress-bar" :style="{'width': (params.base_stat * 100) / 300 + '%', 'background-color': (params.base_stat * 100) / 300 < 25 ? 'red' : (params.base_stat * 100) / 300 < 50 ? 'yellow' : 'orange'}">{{Math.ceil((params.base_stat * 100) / 300) + '%'}}</div>
+                            <div class="progress-bar text-dark fw-bold" :style="{'width': (params.base_stat * 100) / 300 + '%', 'background-color': (params.base_stat * 100) / 300 < 25 ? 'red' : (params.base_stat * 100) / 300 < 50 ? 'yellow' : 'orange'}">{{Math.ceil((params.base_stat * 100) / 300) + '%'}}</div>
                         </div>
                        <!--  <div class="stat-bars bg-dark border rounded border-black h-100 w-100">
                             <div class="bar-width h-100" :style="width: (params.stat.base_stat / 300)"></div>
@@ -93,7 +95,7 @@ export default {
                       width: 114px;
                     }
                     .progress {
-                        height: 0.5em;
+                        height: 1.1em;
                         width: 60%;
                     }
                 }
