@@ -4,7 +4,7 @@ export default {
     name: "PokeCard",
     data() {
         return {
-           //pokeImgs: [front_default, back_default, front_shiny, back_shiny],
+           pokeImgs: ["front_default", "back_default", "front_shiny", "back_shiny"],
            imgAttiva: 0
         }
     },
@@ -17,14 +17,14 @@ export default {
         },
         scorriImg() {
             console.log("le img sono: ", this.pokeImgs)
-            for (i = 0; i = this.pokeImgs.length; i++) {
-                this.imgAttiva = this.pokeImgs[0]
-                this.pokeImgs++
-                if (this.imgAttiva === this.pokeImgs - 1) {
-                    this.imgAttiva = 0;
-                }
-            }
-            console.log(imgAttiva)
+            // for (let i = 0; i = this.pokeImgs.length; i++) {
+            //     this.imgAttiva[i] === this.pokeImgs[i],
+            //     this.pokeImgs[i]++
+            //     if (this.imgAttiva[i] === this.pokeImgs[i] - 1) {
+            //         this.imgAttiva[i] = 0;
+            //     }
+            // }
+            console.log("l'immagine ora è:", this.imgAttiva)
         }
     },
     computed: {
