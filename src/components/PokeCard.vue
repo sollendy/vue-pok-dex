@@ -17,14 +17,14 @@ export default {
         },
         scorriImg() {
             console.log("le img sono: ", this.pokeImgs)
-            // for (let i = 0; i = this.pokeImgs.length; i++) {
-            //     this.imgAttiva[i] === this.pokeImgs[i],
-            //     this.pokeImgs[i]++
-            //     if (this.imgAttiva[i] === this.pokeImgs[i] - 1) {
-            //         this.imgAttiva[i] = 0;
-            //     }
+            // for (let i = 0; i <= this.pokeImgs.length; i++) {
+            //     // this.imgAttiva[i] === this.pokeImgs[i],
+            //     this.imgAttiva[i]++
             // }
-            console.log("l'immagine ora è:", this.imgAttiva)
+
+            // Incrementa l'indice imgAttiva
+            this.imgAttiva = (this.imgAttiva + 1) % this.pokeImgs.length;
+            console.log("l'immagine ora è:", this.pokeImgs[this.imgAttiva]);
         }
     },
     computed: {
@@ -39,7 +39,7 @@ export default {
     <!-- {{ console.log(pokemon.sprites) }} -->
     <div class="foto-stats h-100 d-flex flex-column gap-3">
         <div class="foto-cont w-75 border border-4 border-black bg-light p-2 d-flex justify-content-center align-self-center ms-5 me-5" @click="scorriImg()">
-            <img v-if="pokemon !== ''" class="w-50" :src="pokemon.sprites.front_default" alt="pokéfoto">
+            <img v-if="pokemon !== ''" class="w-50" :src="pokemon.sprites[pokeImgs[imgAttiva]]" alt="pokéfoto">
             <!-- vorrei fare in modo che se l'utente clicca sulla img
              essa scorre mostrando tutte le img disponibili del Pokémon ricominciando da capo
              dopo l'ultima disponibile -->
