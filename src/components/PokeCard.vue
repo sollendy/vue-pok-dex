@@ -73,7 +73,7 @@ export default {
                     </li>
                 </ul>
             </div>
-            <div v-else class="stats text-center border border-dark rounded pt-2 h-100 w-100">
+            <div v-else class="stats text-center border border-dark rounded py-5 h-100 w-100">
                 Nessun Pokémon valido scelto.
             </div>
         </div>
