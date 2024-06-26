@@ -82,6 +82,9 @@ export default {
 
 <style lang="scss" scoped>
 .foto-stats {
+    .foto-cont:hover {
+        cursor: pointer;
+    }
     .stats-cont {
         .stats {
             background-color: rgb(43, 212, 12);
