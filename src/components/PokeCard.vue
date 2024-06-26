@@ -13,10 +13,10 @@ export default {
     },
     methods: {
         con(par) {
-            console.log('methods', par)
+            // console.log('methods', par)
         },
         scorriImg() {
-            console.log("le img sono: ", this.pokeImgs)
+            //console.log("le img sono: ", this.pokeImgs)
             // for (let i = 0; i <= this.pokeImgs.length; i++) {
             //     // this.imgAttiva[i] === this.pokeImgs[i],
             //     this.imgAttiva[i]++
@@ -24,7 +24,7 @@ export default {
 
             // Incrementa l'indice imgAttiva
             this.imgAttiva = (this.imgAttiva + 1) % this.pokeImgs.length;
-            console.log("l'immagine ora è:", this.pokeImgs[this.imgAttiva]);
+            //console.log("l'immagine ora è:", this.pokeImgs[this.imgAttiva]);
         }
     },
     computed: {

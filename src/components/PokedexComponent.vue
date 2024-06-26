@@ -8,6 +8,7 @@ export default {
         return {
             store,
             searchSuccessful: false, // Aggiungi questa variabile
+            pokemonPresi: [] // Array per conservare i Pokémon catturati
         }
     },
     // emits: ['ricerca'],
@@ -19,6 +20,14 @@ export default {
         cercaPokemon(pokemon) {
             this.$emit('cercaPokemon', pokemon);
             this.searchSuccessful = true; // Imposta a true quando la funzione viene chiamata
+        },
+        acchiappaPokemon() {
+            if (this.pokemon && !this.pokemonPresi.includes(this.pokemon)) {
+                this.pokemonPresi.push(this.pokemon);
+            }
+        },
+        visualizzaPokemon(pokemon) {
+            this.cercaPokemon(pokemon.name); // Usa il nome del Pokémon per richiamare la funzione di ricerca
         }
     },
     components: {
@@ -43,7 +52,7 @@ export default {
                         <input v-model="store.userInput" @keyup.enter="cercaPokemon(store.userInput)" type="text" class="form-control" placeholder="Nome pokémon" aria-label="Cerca" aria-describedby="button-addon2">
                         <button @click="cercaPokemon(store.userInput)" class="btn btn-light" type="button" id="button-addon1"><i class="bi bi-search"></i></button>
                     </div>
-                    <button class="btn btn-light border rounded-2" type="button" id="button-addon2" v-if="searchSuccessful">Acchiappalo!</button>
+                    <button class="btn btn-light border rounded-2" type="button" id="button-addon2" v-if="searchSuccessful" @click="acchiappaPokemon">Acchiappalo!</button>
                 </div>
                   <PokeCard :pokemon="pokemon"></PokeCard>
                   <!-- /*v-for="mostriciattolo in store.pokeArr" NON VA VEDI APP PER DETTAGLI*\ -->
@@ -54,9 +63,14 @@ export default {
                 -->
             </div>
         </section>
-        <section class="right-side p-5 h-100 w-100 w-md-50">
-            <div class="right-app h-100 w-100 bg-light pb-4 pt-md-2 ps-2">
-                <h5>Miei Pokémon</h5>
+        <section class="right-side h-100 p-5 h-100 w-100 w-md-50">
+            <div class="right-app h-100 w-100 bg-light d-flex flex-column justify-content-center gap-5">
+                <h5 class="ps-2 pt-1">Miei Pokémon</h5>
+                <ul class="list-group h-75 overflow-auto">
+                    <li class="list-group-item list-group-item-action" v-for="(pokemonCatturato, index) in pokemonPresi" :key="index" @click="visualizzaPokemon(pokemonCatturato)">
+                        {{ pokemonCatturato.name }}
+                    </li>
+                </ul>
             </div>
         </section>
     </div>
